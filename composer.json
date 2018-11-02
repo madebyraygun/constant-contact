@@ -1,0 +1,51 @@
+{
+    "name": "madebyraygun/constant-contact",
+    "description": "Basic Contact Contact signup form",
+    "type": "craft-plugin",
+    "version": "0.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "constant contact"
+    ],
+    "support": {
+        "docs": "https://github.com/madebyraygun/constant-contact/blob/master/README.md",
+        "issues": "https://github.com/madebyraygun/constant-contact/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dalton Rooney",
+            "homepage": "https://madebyraygun.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1",
+        "constantcontact/constantcontact": "dev-development"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+          "madebyraygun\\constantcontact\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+          "type": "git",
+          "url": "https://github.com/constantcontact/php-sdk.git"
+        }
+    ],
+    "extra": {
+        "name": "Constant Contact",
+        "handle": "constant-contact",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/madebyraygun/constant-contact/master/CHANGELOG.md",
+        "components": {
+            "constantContactService": "madebyraygun\\constantcontact\\services\\ConstantContactService"
+        },
+        "class": "madebyraygun\\constantcontact\\ConstantContact"
+    }
+}
