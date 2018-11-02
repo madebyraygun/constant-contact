@@ -19,7 +19,8 @@ This plugin is not on packagist, so you'll need to create a local Composer repos
 
 3. Add your local directory to the list of Composer repositories like so:
 
-```"repositories": [
+```
+"repositories": [
   {
     "type": "composer",
     "url": "https://asset-packagist.org"
@@ -33,9 +34,10 @@ This plugin is not on packagist, so you'll need to create a local Composer repos
 
 4. Since the plugin requires a development version of the Constant Contact PHP SDK, you'll need to change your project's minimum stability:
 
-```"minimum-stability": "dev",
+```
+"minimum-stability": "dev",
   "prefer-stable" : true,
-  ```
+```
 
 4. Run composer update.
 
@@ -104,10 +106,3 @@ $('form').on("submit", function(event) {
     }})
 });
 ```
-## Constant Contact Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
-
-Brought to you by [Dalton Rooney](https://madebyraygun.com)
