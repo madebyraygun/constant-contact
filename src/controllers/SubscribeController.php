@@ -46,7 +46,7 @@ class SubscribeController extends Controller
      */
     public function actionIndex()
     {
-        // $this->requirePostRequest();
+        $this->requirePostRequest();
         $request = Craft::$app->getRequest();
         $email = $request->getParam('email');
         $plugin = Plugin::getInstance();
