@@ -27,10 +27,12 @@ This plugin is not on packagist, so you'll need to create a local Composer repos
   },
   {
     "type": "path",
-    "url": "../dev/trending-posts/"
+    "url": "/app/dev/constant-contact/"
   }
 ]
 ```
+
+Where `/app/dev/constant-contact/` is a valid path on your local filesystem.
 
 4. Since the plugin requires a development version of the Constant Contact PHP SDK, you'll need to change your project's minimum stability:
 
@@ -41,7 +43,7 @@ This plugin is not on packagist, so you'll need to create a local Composer repos
 
 4. Run composer update.
 
-5. In the Control Panel, go to Settings → Plugins and click the “Install” button for Trending Posts.
+5. In the Control Panel, go to Settings → Plugins and click the “Install” button for Constant Contact.
 
 ## Configuring Constant Contact
 
