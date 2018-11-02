@@ -14,8 +14,6 @@ use madebyraygun\constantcontact\ConstantContact as Plugin;
 use Ctct\Components\Contacts\Contact;
 use Ctct\ConstantContact;
 use Ctct\Exceptions\CtctException;
-
-
 use Craft;
 use craft\base\Component;
 
