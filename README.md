@@ -41,9 +41,9 @@ Where `/app/dev/constant-contact/` is a valid path on your local filesystem.
   "prefer-stable" : true,
 ```
 
-4. Run composer update.
+5. Run composer update.
 
-5. In the Control Panel, go to Settings → Plugins and click the “Install” button for Constant Contact.
+6. In the Control Panel, go to Settings → Plugins and click the “Install” button for Constant Contact.
 
 ## Configuring Constant Contact
 
