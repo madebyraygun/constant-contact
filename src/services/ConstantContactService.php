@@ -43,14 +43,10 @@ class ConstantContactService extends Component
         $client = new Client($settings->key, $settings->token);
         $payload = [
             'lists' => [
-                [
-                    'id' => $settings->list
-                ]
+                ['id' => $settings->list]
             ],
             'email_addresses' => [
-                [
-                    'email_address' => $email
-                ]
+                ['email_address' => $email]
             ]
         ];
 
