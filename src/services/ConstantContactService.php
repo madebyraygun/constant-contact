@@ -11,11 +11,9 @@
 namespace madebyraygun\constantcontact\services;
 
 use madebyraygun\constantcontact\ConstantContact as Plugin;
-use Ctct\Components\Contacts\Contact;
-use Ctct\ConstantContact;
-use Ctct\Exceptions\CtctException;
 use Craft;
 use craft\base\Component;
+use Classy\ConstantContact\ConstantContactClient as Client;
 
 /**
  * ConstantContactService Service
@@ -42,26 +40,39 @@ class ConstantContactService extends Component
     public function subscribe($email) {
         $plugin = Plugin::getInstance();
         $settings = $plugin->getSettings();
-        $cc = new ConstantContact($settings->key);
-        $response = $cc->contactService->getContacts($settings->token, array("email" => $email));
-        $returnCode = array();
-        if (empty($response->results)) {
-            $action = "Creating Contact";
-            $contact = new Contact();
-            $contact->addEmail($email);
-            $contact->addList($settings->list);
-            $createContact = $cc->contactService->addContact($settings->token, $contact, false);
-            if ( $createContact->status == 'ACTIVE') {
-                $returnCode = array('success'=>true,'message'=>'You\'ve been added to the list.');
-            } else {
-                $returnCode = array('success'=>false,'message'=>'There was a problem adding you to the list. Please contact the administrator.');
+        $client = new Client($settings->key, $settings->token);
+        $payload = [
+            'lists' => [
+                [
+                    'id' => $settings->list
+                ]
+            ],
+            'email_addresses' => [
+                [
+                    'email_address' => $email
+                ]
+            ]
+        ];
+
+        try {
+            $response = $client->addContact($payload);
+            return [
+                'success' => true,
+                'message' => "You've been added to the list."
+            ];
+        } catch (\Exception $e) {
+            $error = json_decode($e->getResponse()->getBody()->getContents(), true);
+            if ( !empty($error) ) { 
+                return [
+                    'success' => false,
+                    'message' => 'Error: ' . $error[0]['error_message']
+                ];
             }
-        } elseif ( $response->results[0]->status == 'ACTIVE' ) {
-            $returnCode = array('success'=>false,'message'=>'It looks like you\'re already on this list! Want to subscribe a different email address?');
-        } else {
-            $returnCode = array('success'=>false,'message'=>'There was a problem adding you to the list. Please contact the administrator.');
+            return [
+                'success' => false,
+                'message' => 'An unknown error occurred.'
+            ];
         }
-        return $returnCode;
     }
 
     /**
