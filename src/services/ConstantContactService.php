@@ -56,19 +56,22 @@ class ConstantContactService extends Component
 
         try {
             $response = $client->addContact($payload);
-            Craft::info('success',__METHOD__);
             return [
                 'success' => true,
                 'message' => "You've been added to the list."
             ];
-        } catch (Exception $e) {
-            $httpStatusCode = $e->getCode();
-            Craft::info('fail: ' . $httpStatusCode,__METHOD__);
+        } catch (\Exception $e) {
+            $error = json_decode($e->getResponse()->getBody()->getContents(), true);
+            if ( !empty($error) ) { 
+                return [
+                    'success' => false,
+                    'message' => 'Error: ' . $error[0]['error_message']
+                ];
+            }
             return [
                 'success' => false,
-                'message' => "Something didn't work."
+                'message' => 'An unknown error occurred.'
             ];
-            
         }
     }
 
