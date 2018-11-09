@@ -1,6 +1,6 @@
 # Constant Contact plugin for Craft CMS 3.x
 
-Basic integration with Constant Contact API to allows you to add new contacts to your Contant Contact lists.
+Basic integration with Constant Contact API to allows you to add new contacts to your Constant Contact lists.
 
 ## Requirements
 
