@@ -5,49 +5,25 @@ Create a form and add contacts to your Contant Contact list. This is a very quic
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 ## Installation
 
-This plugin is not on packagist, so you'll need to create a local Composer repository to install. From [Andrew Welch's guide to Craft 3 plugins](https://nystudio107.com/blog/so-you-wanna-make-a-craft-3-plugin):
+To install the plugin, follow these instructions.
 
-1. Download the plugin locally to a directory relative to your Craft installation. 
+1. Open your terminal and go to your Craft project:
 
-2. Add the following to the *require* section of your site's composer.json:
+        cd /path/to/project
 
-`"madebyraygun/constant-contact": "^0.0.1"`
+2. Then tell Composer to load the plugin:
 
-3. Add your local directory to the list of Composer repositories like so:
+        composer require madebyraygun/constant-contact
 
-```
-"repositories": [
-  {
-    "type": "composer",
-    "url": "https://asset-packagist.org"
-  },
-  {
-    "type": "path",
-    "url": "/app/dev/constant-contact/"
-  }
-]
-```
-
-Where `/app/dev/constant-contact/` is a valid path on your local filesystem.
-
-4. Since the plugin requires a development version of the Constant Contact PHP SDK, you'll need to change your project's minimum stability:
-
-```
-"minimum-stability": "dev",
-  "prefer-stable" : true,
-```
-
-5. Run composer update.
-
-6. In the Control Panel, go to Settings → Plugins and click the “Install” button for Constant Contact.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Constant Contact.
 
 ## Configuring Constant Contact
 
-Signup for Constant Contact API access at [Mashery](https://constantcontact.mashery.com/). From there you can generate your API key and get an authentication token. You can also get your list ID by visiting the [API tester](https://constantcontact.mashery.com/io-docs) and intiate a GET request against the `/lists` endpoint..
+Signup for Constant Contact API access at [Mashery](https://constantcontact.mashery.com/). From there you can generate your API key and get an authentication token. You can also get your list ID by visiting the [API tester](https://constantcontact.mashery.com/io-docs) and intiate a GET request against the `/lists` endpoint.
 
 Configure the plugin by creating a new config file named constant-contact.php in your config folder, and add the following the config parameters:
 
