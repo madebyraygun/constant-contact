@@ -52,8 +52,11 @@ class SubscribeController extends Controller
         $plugin = Plugin::getInstance();
         $token = $plugin->getSettings()->token;
 
-        if ($email === '' || !$this->validateEmail($email)) { // error, invalid email
-            $result = array('success'=>false,'message'=>'Email address is invalid. Please try again.');
+        if ($email === '' || !$this->validateEmail($email)) {
+             return [
+                'success' => false,
+                'message' => "Email address is invalid. Please try again."
+            ];
         } else {
             $result = $plugin->constantContactService->subscribe($email);
         }
@@ -66,10 +69,6 @@ class SubscribeController extends Controller
 
         if ($redirect !== '' && $result['success'] == true) {
             return $this->redirectToPostedUrl();
-        }
-
-        if ( !$result) {
-            Craft::$app->getSession()->setError('Could not communicate with Constant Contact. Please try again later.');
         }
 
         if ( $result['success'] == false) {
