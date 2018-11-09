@@ -2,7 +2,7 @@
     "name": "madebyraygun/constant-contact",
     "description": "Basic Contact Contact integration for Craft CMS",
     "type": "craft-plugin",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": [
         "craft",
         "cms",

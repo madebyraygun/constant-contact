@@ -9,10 +9,9 @@
  */
 
 namespace madebyraygun\constantcontact\services;
-
-use madebyraygun\constantcontact\ConstantContact as Plugin;
 use Craft;
 use craft\base\Component;
+use madebyraygun\constantcontact\ConstantContact as Plugin;
 use Classy\ConstantContact\ConstantContactClient as Client;
 
 /**
@@ -37,13 +36,13 @@ class ConstantContactService extends Component
      *
      * @return mixed
      */
-    public function subscribe($email) {
+    public function subscribe($email, $listID) {
         $plugin = Plugin::getInstance();
         $settings = $plugin->getSettings();
         $client = new Client($settings->key, $settings->token);
         $payload = [
             'lists' => [
-                ['id' => $settings->list]
+                ['id' => $listID]
             ],
             'email_addresses' => [
                 ['email_address' => $email]
