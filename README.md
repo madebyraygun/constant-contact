@@ -53,6 +53,14 @@ Create a new form in a front-end template, like so:
   </form>
  ```
 
+You can optionally override the default list by adding a hidden listid input
+
+### Example
+
+```
+<input type="hidden" name="listid" value="12345">
+```
+
 ### Displaying flash messages
 
 When a contact form is submitted, the plugin will set a notice or success flash message on the user session. You can display it in your template like this:

@@ -47,8 +47,11 @@ class SubscribeController extends Controller
     public function actionIndex()
     {
         $this->requirePostRequest();
+        $plugin = Plugin::getInstance();
         $request = Craft::$app->getRequest();
+        $settings = $plugin->getSettings();
         $email = $request->getParam('email');
+        $listID = $request->getParam('listid', $settings->list); 
         $redirect = $request->getParam('redirect', '');
         $plugin = Plugin::getInstance();
 
@@ -59,7 +62,7 @@ class SubscribeController extends Controller
             ];
         }
 
-        $result = $plugin->constantContactService->subscribe($email);
+        $result = $plugin->constantContactService->subscribe($email, $listID);
 
         if ($request->getAcceptsJson()) {
             return $this->asJson($result);
