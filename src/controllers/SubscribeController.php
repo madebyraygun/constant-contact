@@ -49,34 +49,32 @@ class SubscribeController extends Controller
         $this->requirePostRequest();
         $request = Craft::$app->getRequest();
         $email = $request->getParam('email');
+        $redirect = $request->getParam('redirect', '');
         $plugin = Plugin::getInstance();
-        $token = $plugin->getSettings()->token;
 
         if ($email === '' || !$this->validateEmail($email)) {
              return [
                 'success' => false,
                 'message' => "Email address is invalid. Please try again."
             ];
-        } else {
-            $result = $plugin->constantContactService->subscribe($email);
         }
 
-        $redirect = $request->getParam('redirect', '');
-   
+        $result = $plugin->constantContactService->subscribe($email);
+
         if ($request->getAcceptsJson()) {
             return $this->asJson($result);
         }
 
-        if ($redirect !== '' && $result['success'] == true) {
-            return $this->redirectToPostedUrl();
-        }
-
         if ( $result['success'] == false) {
             Craft::$app->getSession()->setError($result['message']);
+            return null;
         }
 
         if (  $result['success'] == true) {
             Craft::$app->getSession()->setNotice($result['message']);
+            if ($redirect !== '') {
+                return $this->redirectToPostedUrl();
+            }
         }
         
         return null;
