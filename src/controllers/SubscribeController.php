@@ -67,11 +67,11 @@ class SubscribeController extends Controller
 
         if ( $result['success'] == false) {
             Craft::$app->getSession()->setError($result['message']);
+            return null;
         }
 
         if (  $result['success'] == true) {
             Craft::$app->getSession()->setNotice($result['message']);
-
             if ($redirect !== '') {
                 return $this->redirectToPostedUrl();
             }
