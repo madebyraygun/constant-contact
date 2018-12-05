@@ -9,10 +9,11 @@
  */
 
 namespace madebyraygun\constantcontact\services;
+
 use Craft;
 use craft\base\Component;
 use madebyraygun\constantcontact\ConstantContact as Plugin;
-use Classy\ConstantContact\ConstantContactClient as Client;
+use madebyraygun\constantcontact\lib\ConstantContactClient as Client;
 
 /**
  * ConstantContactService Service
@@ -49,8 +50,10 @@ class ConstantContactService extends Component
             ]
         ];
 
+        $action = 'ACTION_BY_VISITOR';
+
         try {
-            $response = $client->addContact($payload);
+            $response = $client->addContact($payload, $action);
             return [
                 'success' => true,
                 'message' => "You've been added to the list."
