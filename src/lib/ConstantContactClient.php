@@ -100,7 +100,7 @@ class ConstantContactClient
     public function addContact(array $payload, string $action = 'ACTION_BY_OWNER')
     {
         $query = [];
-        $query['action_by'] = 'ACTION_BY_OWNER';
+        $query['action_by'] = $action;
 
         $options = [
             'json'  => $payload,
