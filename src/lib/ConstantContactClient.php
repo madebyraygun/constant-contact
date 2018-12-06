@@ -111,6 +111,27 @@ class ConstantContactClient
     }
 
     /**
+     * Update Contact
+     *
+     * @param array $payload
+     *
+     * @return mixed|ResponseInterface
+     */
+    public function updateContact(object $contact, string $action = 'ACTION_BY_OWNER')
+    {
+        $query = [];
+        $query['action_by'] = $action;
+
+        $options = [
+            'json'  => $contact,
+            'query' => $query,
+        ];
+
+        $url = 'contacts/' . $contact->id;
+        return $response = $this->request('PUT', $url, $options);
+    }
+
+    /**
      * Forward any other call to guzzle client.
      *
      * @param  string  $method
