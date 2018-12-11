@@ -37,7 +37,7 @@ class SubscribeController extends Controller
     // Public Methods
     // =========================================================================
 
-  
+
     /**
      * Handle a request going to our plugin's actionSubscribe URL,
      * e.g.: actions/constant-contact/subscribe
@@ -51,8 +51,10 @@ class SubscribeController extends Controller
         $request = Craft::$app->getRequest();
         $settings = $plugin->getSettings();
         $email = $request->getParam('email');
-        $listID = $request->getParam('listid', $settings->list); 
+        $listID = $request->getParam('listid', $settings->list);
         $redirect = $request->getParam('redirect', '');
+        $firstName = $request->getParam('first_name', '');
+        $lastName = $request->getParam('last_name', '');
         $plugin = Plugin::getInstance();
 
         if ($email === '' || !$this->validateEmail($email)) {
@@ -62,7 +64,7 @@ class SubscribeController extends Controller
             ];
         }
 
-        $result = $plugin->constantContactService->subscribe($email, $listID);
+        $result = $plugin->constantContactService->subscribe($email, $listID, $firstName, $lastName);
 
         if ($request->getAcceptsJson()) {
             return $this->asJson($result);
@@ -79,7 +81,7 @@ class SubscribeController extends Controller
                 return $this->redirectToPostedUrl();
             }
         }
-        
+
         return null;
     }
 
