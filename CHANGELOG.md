@@ -1,5 +1,13 @@
 # Constant Contact Changelog
 
+## 0.1.2 - 2018-12-18
+
+### Added 
+- Plugin now checks for existing subscriber before trying to add to the list
+
+### Changed
+- Forked API client and included directly in plugin to support new updateContact method
+
 ## 0.1.1 - 2018-11-09
 
 ### Added

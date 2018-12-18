@@ -9,6 +9,7 @@
  */
 
 namespace madebyraygun\constantcontact\controllers;
+
 use Craft;
 use craft\web\Controller;
 use madebyraygun\constantcontact\ConstantContact as Plugin;
