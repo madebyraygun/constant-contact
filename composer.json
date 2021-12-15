@@ -2,7 +2,7 @@
     "name": "madebyraygun/constant-contact",
     "description": "Basic Contact Contact integration for Craft CMS",
     "type": "craft-plugin",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "keywords": [
         "craft",
         "cms",
@@ -22,8 +22,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-RC1",
-        "guzzlehttp/guzzle": "^6.1"
+        "craftcms/cms": "^3.7.20",
+        "guzzlehttp/guzzle": "^6.5.5|^7.2.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,5 +1,8 @@
 # Constant Contact Changelog
 
+## 0.1.3 - 2018-12-18
+- Upgraded Guzzle client. Now requires Craft 3.7.
+
 ## 0.1.2 - 2018-12-18
 
 ### Added 
