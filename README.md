@@ -4,7 +4,7 @@ Basic integration with Constant Contact API to allow you to add new contacts to 
 
 ## Requirements
 
-This plugin requires Craft CMS 3.7 or later.
+This plugin requires Craft CMS 3.7.20 or later.
 
 ## Installation
 
@@ -36,6 +36,8 @@ return [
     'token' => 'xxxxxx',
 ];
 ```
+
+Note: list should be a numerical ID.
 
 ## Using Constant Contact
 
