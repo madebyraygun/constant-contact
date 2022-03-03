@@ -37,7 +37,7 @@ class ConstantContactService extends Component
      *
      * @return mixed
      */
-    public function subscribe($email, $listID) {
+    public function subscribe($email, $listID, $firstName = '', $lastName = '') {
         $plugin = Plugin::getInstance();
         $settings = $plugin->getSettings();
         $client = new Client($settings->key, $settings->token);
@@ -82,7 +82,9 @@ class ConstantContactService extends Component
             ],
             'email_addresses' => [
                 ['email_address' => $email]
-            ]
+            ],
+            'first_name' => $firstName,
+            'last_name' => $lastName,
         ];
 
         try {
@@ -138,7 +140,7 @@ class ConstantContactService extends Component
             ];
         } catch (\Exception $e) {
             $error = json_decode($e->getResponse()->getBody()->getContents(), true);
-            if ( !empty($error) ) { 
+            if ( !empty($error) ) {
                 return [
                     'success' => false,
                     'message' => 'Error: ' . $error[0]['error_message']
